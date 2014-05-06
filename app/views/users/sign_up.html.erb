@@ -1,0 +1,25 @@
+
+	<div class="container">
+	 	<div class="well">
+	  	<div class="row"> 
+	    	<div class="col-lg-10 ">	      	
+	      	<%= form_for :user, :url => users_path do %>	
+	        	<h1>New Member Registration</h1>
+	        	<legend>
+	        		<h4>To get access to this inventory list of gadgets please fill out the following form. Thank you </h4>
+	        	</legend>
+	        	<!--<% if flash[:error] %>
+							<font color = "red" size = "4">
+								<%= flash[:error].html_safe %>
+							</font>	
+						<% end %>-->
+						<%= error_messages_for(@user) %>
+						
+						<%= render(:partial => "sign_up_form")%>
+						<%= render(:partial => "password_button")%>      	
+	    		<%end%>
+	    	</div>
+	  	</div>
+	 	</div>    
+	</div>   
+

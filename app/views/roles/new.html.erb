@@ -1,0 +1,31 @@
+
+<div class="container">
+ 	<div class="well">
+  	<div class="row"> 
+    	<div class="col-lg-10 ">	      	
+      	<%= form_for :role, :url => roles_path, :method => 'post' do |t| %>
+        	<!--<% if flash[:error] %>
+						<font color = "red" size = "4">
+							<%= flash[:error].html_safe %>
+						</font>	
+					<% end %>-->
+					<%= error_messages_for(@role) %>
+					<center>
+						<table class="table table-striped table-hover">
+							<tr>
+								<th><label for="Name">Name</label></th>
+								<td><%= t.text_field :role%></td>
+							</tr>
+							<tr>
+								<th><%= link_to "Back", roles_path, :class => "btn btn-primary"%></th>
+								<td><%= t.submit "Add", :class => "btn btn-primary"%></td>
+							</tr>
+						</table>
+					</center>      	
+    		<%end%>
+    	</div>
+  	</div>
+ 	</div>    
+</div>   
+
+

@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="well">
+		<div class="row">
+			<div class="col-lg-10 simple_form form-horizontal">
+				<%= form_for :user, :url => users_admin_index_path, :method => 'get' do %>
+					<h1>Member Login</h1>
+					<legend>
+						<h4>If you are not a member yet please become a member 
+						<%= link_to "here",sign_up_users_path %> to Sign In</h4>
+					</legend>
+
+					<% if flash[:error] %>
+						<font color = "red" size = "4">
+							<%= flash[:error].html_safe %>
+						</font>	
+					<% end %>
+			    <div class="control-group email optional user_email form-group">
+			    	<label class="email optional control-label col-sm-2 control-label" for="user_email">Email</label>
+			    	<div class="col col-md-6">
+			    		<input autofocus="autofocus" class="string email optional form-control" id="user_email" name="user[email]" placeholder=" Email" size="50" type="email" value="" />
+			    	</div>
+			    </div>
+
+			    <div class="control-group password optional user_password form-group">
+			    	<label class="password optional control-label col-sm-2 control-label" for="user_password">Password</label>
+			    	<div class="col col-md-6">
+			    		<input class="password optional form-control" id="user_password" name="user[password]" placeholder="Password" size="50" type="password" />
+			    	</div>
+			    </div>
+				  <input class="btn btn-primary" name="commit" type="submit" value="sign in" style="margin-left: 17%" />
+				<%end%>
+			</div>			
+		</div>
+	</div>
+</div>
+
