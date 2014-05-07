@@ -1,19 +1,7 @@
 <div class="row">
 	<div class="col-md-8"> 
 		<div class="row">
-			<div class="col-lg=8 col-md=8">
-				<form accept-charset="UTF-8" action="/qualityinventory" class="qualityinventory_search" id="qualityinventory_search" method="get">
-					<div style="margin:0;padding:0;display:inline">	
-						<input name="utf8" type="hidden"
-						 value="&	#x2713;" />
-					</div>
-					<div class="field">
-							<label for="q_methodorgadget_cont">Search By: Name</label></br>
-							<input id="q_methodorgadget_cont" name="q[methodorgadget_cont]" size="30" type="text" />
-						</div>
-						</br>
-						<input class="btn btn-primary" name="commit" type="submit" value="Search" /> 
-				</form>        
+			<div class="col-lg=8 col-md=8"> 
 			</div>											
 			</br>
 		</div>
@@ -31,11 +19,11 @@
 				</tr>
 		  </th>
 			
-			<% @roles.each do |t|%>
+			<% @roles.each do |role|%>
 				<tr>
-					<td><%= t.role%></td>
-					<td><%= link_to "edit",edit_role_path(t.id)%></td>
-					<td><%= link_to "delete",role_path(t.id), :method => 'delete'%></td>
+					<td><%= role.role%></td>
+					<td><%= link_to "edit",edit_role_path(role.id)%></td>
+					<td><%= link_to "delete",role_path(role.id), :method => 'delete'%></td>
 				</tr>
 			<%end%>
 		</table>

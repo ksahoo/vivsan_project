@@ -14,42 +14,42 @@
 					<% end %>-->
 					<%= error_messages_for(@user) %>
 					<div class="form-group row">
-						<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">First_name</label>
+						 <%= user.label :First_name, class: "string optional control-label control-label col-md-2 col-lg-2" %>
 						<div class="col-md-4 col-lg-4">
 							<%= user.text_field :firstname, class: "form-control" %>
 						</div>
 					</div>
 
 				  <div class="form-group row">
-				  	<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">Last_name</label>
+				  	 <%= user.label :Last_name, class: "string optional control-label control-label col-md-2 col-lg-2" %>
 				  	<div class="col-md-4 col-lg-4">		
 				  		<%= user.text_field :lastname, class: "form-control" %>
 				  	</div>
 				  </div>
 
 				  <div class="form-group row">
-				  	<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">Email</label>
+				  	 <%= user.label :Email, class: "string optional control-label control-label col-md-2 col-lg-2" %>
 				  	<div class="col-md-4 col-lg-4">	
 				  		<%= user.text_field :email, class: "form-control" %>
 				  	</div>
 				  </div>
 
 				  <div class="form-group row">
-				  	<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">Institution</label>
+				  	 <%= user.label :Institution, class: "string optional control-label control-label col-md-2 col-lg-2" %>
 				  	<div class="col-md-4 col-lg-4">	
 				  		<%= user.text_field :institution, class: "form-control" %>
 				  	</div>
 				  </div>
 
 				  <div class="form-group row">
-				  	<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">Password</label>
+				  	 <%= user.label :Role, class: "string optional control-label control-label col-md-2 col-lg-2" %>
 				  	<div class="col-md-4 col-lg-4">	
 				  		<%= user.password_field :password, class: "form-control" %>
 				  	</div>
 				  </div>
 
 				  <div class="form-group row">
-				  	<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">Confirm password</label>
+				  	 <%= user.label :Confirm_password, class: "string optional control-label control-label col-md-2 col-lg-2" %>
 				  	<div class="col-md-4 col-lg-4">	
 				  		<%= user.password_field :confirmation, class: "form-control" %>
 				  	</div>

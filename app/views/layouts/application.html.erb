@@ -15,7 +15,18 @@
 			<%= render :partial => "sidebar"%>
 		</div>
 		<div class=" row col-md-10">
+			<div class="row">
+				<% flash.each do |key,msg| %>
+				    <div class="message" id="<%= key %>">
+				        <div class="message-inner">
+				            <%= content_tag :div, msg %>
+				            <a class="dismiss">x</a>
+				        </div>
+				    </div>
+				<% end %>				
+			</div>
 			<div class="well">
+
 				<%= yield %>
 			</div>
 		</div>

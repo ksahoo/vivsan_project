@@ -1,4 +1,11 @@
 VivsanProject::Application.routes.draw do
+  get "gadgets/index"
+  get "gadgets/new"
+  get "gadgets/create"
+  get "gadgets/show"
+  get "gadgets/edit"
+  get "gadgets/update"
+  get "gadgets/destroy"
   # get "roles/edit"
   # get "roles/update"
   # get "roles/new"

@@ -2,7 +2,8 @@
 <div class="container">
 	<div class="row"> 
   	<div class="col-lg-10 ">	      	
-      <% @url = {controller: 'users_admin', action: 'index', method: :get} %>
+      <% @url = {controller: 'users_admin', action: 'create'} %>
+      <% @method = 'post'%>
     	<%= render 'form'%>
   	</div>
 	</div>   

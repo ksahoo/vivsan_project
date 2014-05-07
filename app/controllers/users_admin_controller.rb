@@ -4,17 +4,19 @@ class UsersAdminController < ApplicationController
 	end
 
 	def new
-		
+		@user = User.new
 	end
 
   def create
     # render :text => params.inspect and return
-    @user = User.new(firstname: params[:user][:first_name],lastname: params[:last_name], email: params[:email], institution: params[:institution], role: params[:role], password: params[:password])
+    @user = User.new(firstname: params[:user][:firstname],lastname: params[:user][:lastname], email: params[:user][:email], institution: params[:user][:institution], role: params[:user][:role], password: params[:user][:password])
     if @user.save
+      flash[:notice] =  'User successfully created.' 
       redirect_to users_admin_index_path
     else
         #puts "error messages"
         #puts @user.errors
+        flash[:error] =  'Problem creating user.' 
         render 'new'
     end
   end
@@ -51,7 +53,9 @@ class UsersAdminController < ApplicationController
     if @user.save  
       puts "entered in to if of update"
       @users = User.all
-      render 'index'
+      redirect_to users_admin_index_path
+    else
+      render 'edit'
     # else
     #   render 'update'
     end

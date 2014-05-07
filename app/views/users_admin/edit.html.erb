@@ -1,7 +1,8 @@
 <div class="container">
 	<div class="row"> 
   	<div class="col-lg-10 ">	      	
-      <% @url = {controller: 'users_admin', action: 'index', method: :get} %>
+      <% @url = users_admin_path %>
+      <% @method = 'patch'%>
     	<%= render 'form'%>
   	</div>
 	</div>    

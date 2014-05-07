@@ -1,0 +1,13 @@
+<%= form_for :role, :url => @url, :method => @method do |role| %>
+	<%= error_messages_for(@role) %>
+	<div class="form-group row">
+	 	<%= role.label :Role_name, class: "string optional control-label control-label col-md-2 col-lg-2" %>
+ 		<div class="col-md-4 col-lg-4">
+			<%= role.text_field :role, class: "form-control"%>
+		</div>
+	</div>
+	<div class="row col-lg-6 col-md-6">
+		<%= link_to "Back", roles_path, :class => "btn btn-primary", style: "margin-left: 15%"%>
+		<%= role.submit "Submit", :class => "btn btn-primary", style: "margin-left: 17%"%>
+	</div>     	
+<%end%>
