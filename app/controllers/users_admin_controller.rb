@@ -4,11 +4,12 @@ class UsersAdminController < ApplicationController
 	end
 
 	def new
-		@roles = Role.all
+		
 	end
 
   def create
-    @user = User.new(firstname: params[:user][:first_name],lastname: params[:user][:last_name], email: params[:user][:email], institution: params[:user][:institution], role: params[:user][:role], password: params[:user][:password])
+    # render :text => params.inspect and return
+    @user = User.new(firstname: params[:user][:first_name],lastname: params[:last_name], email: params[:email], institution: params[:institution], role: params[:role], password: params[:password])
     if @user.save
       redirect_to users_admin_index_path
     else

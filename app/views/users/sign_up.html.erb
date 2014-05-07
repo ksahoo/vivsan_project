@@ -1,25 +1,65 @@
 
 	<div class="container">
-	 	<div class="well">
-	  	<div class="row"> 
-	    	<div class="col-lg-10 ">	      	
-	      	<%= form_for :user, :url => users_path do %>	
-	        	<h1>New Member Registration</h1>
-	        	<legend>
-	        		<h4>To get access to this inventory list of gadgets please fill out the following form. Thank you </h4>
-	        	</legend>
-	        	<!--<% if flash[:error] %>
-							<font color = "red" size = "4">
-								<%= flash[:error].html_safe %>
-							</font>	
-						<% end %>-->
-						<%= error_messages_for(@user) %>
-						
-						<%= render(:partial => "sign_up_form")%>
-						<%= render(:partial => "password_button")%>      	
-	    		<%end%>
-	    	</div>
-	  	</div>
-	 	</div>    
+  	<div class="row"> 
+    	<div class="col-lg-10 ">	      	
+      	<%= form_for :user, :url => users_path do |user|%>	
+        	<h1>New Member Registration</h1>
+        	<legend>
+        		<h4>To get access to this inventory list of gadgets please fill out the following form. Thank you </h4>
+        	</legend>
+        	<!--<% if flash[:error] %>
+						<font color = "red" size = "4">
+							<%= flash[:error].html_safe %>
+						</font>	
+					<% end %>-->
+					<%= error_messages_for(@user) %>
+					<div class="form-group row">
+						<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">First_name</label>
+						<div class="col-md-4 col-lg-4">
+							<%= user.text_field :firstname, class: "form-control" %>
+						</div>
+					</div>
+
+				  <div class="form-group row">
+				  	<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">Last_name</label>
+				  	<div class="col-md-4 col-lg-4">		
+				  		<%= user.text_field :lastname, class: "form-control" %>
+				  	</div>
+				  </div>
+
+				  <div class="form-group row">
+				  	<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">Email</label>
+				  	<div class="col-md-4 col-lg-4">	
+				  		<%= user.text_field :email, class: "form-control" %>
+				  	</div>
+				  </div>
+
+				  <div class="form-group row">
+				  	<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">Institution</label>
+				  	<div class="col-md-4 col-lg-4">	
+				  		<%= user.text_field :institution, class: "form-control" %>
+				  	</div>
+				  </div>
+
+				  <div class="form-group row">
+				  	<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">Password</label>
+				  	<div class="col-md-4 col-lg-4">	
+				  		<%= user.password_field :password, class: "form-control" %>
+				  	</div>
+				  </div>
+
+				  <div class="form-group row">
+				  	<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">Confirm password</label>
+				  	<div class="col-md-4 col-lg-4">	
+				  		<%= user.password_field :confirmation, class: "form-control" %>
+				  	</div>
+				  </div>
+
+				  <div class="form-group col-md-6 col-lg-6 row">
+				  	<%= user.submit "Become a Member", class: "btn btn-primary", style: "margin-left: 20%"%>
+				  </div>    	
+    		<%end%>
+    	</div>
+  	</div>    
 	</div>   
 

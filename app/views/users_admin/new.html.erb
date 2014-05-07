@@ -1,33 +1,9 @@
 
 <div class="container">
- 	<div class="well">
-  	<div class="row"> 
-    	<div class="col-lg-10 ">	      	
-      	<%= form_for(:user, :url => {:action => 'create'}) do %>
-        	<!--<% if flash[:error] %>
-						<font color = "red" size = "4">
-							<%= flash[:error].html_safe %>
-						</font>	
-					<% end %>-->
-					<%= error_messages_for(@user) %>
-					<%= render(:partial => "sign_up_form")%>
-          <div class="form-group">
-          	<label class="string optional control-label control-label col-md-2 col-lg-2" for="user_Institution">Role</label>
-          	<div class="col-md-4 col-lg-4">
-             	<select class="form-control" name="user[role]">
-                <%= @roles.each do |r|%>
-           			<option value="r.role"><%= r.role%></option>
-           			<!-- <option value="User">User</option>
-           			<option value="NRC Researcher">NRC Researcher</option> -->
-                <% end %>
-             	</select>
-            </div>
-          </div>
-        	<%= render(:partial => "password_button")%>	       	
-    		<%end%>
-    	</div>
+	<div class="row"> 
+  	<div class="col-lg-10 ">	      	
+      <% @url = {controller: 'users_admin', action: 'index', method: :get} %>
+    	<%= render 'form'%>
   	</div>
- 	</div>    
+	</div>   
 </div>   
-</body>
-</html>

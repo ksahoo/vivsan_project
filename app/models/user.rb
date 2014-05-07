@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\z/i
 	validates_presence_of :firstname
-	validates_length_of :firstname, :within => 4..15
+	# validates_length_of :firstname, :within => 4..15
 	validates_presence_of :lastname
 	validates_presence_of :email
 	validates_uniqueness_of :email

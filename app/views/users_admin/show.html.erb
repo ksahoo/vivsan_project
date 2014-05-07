@@ -30,7 +30,7 @@
 						</table>
 					</center>
 					<%= link_to("<<Back",{:controller => 'users_admin'}, :class => 'btn btn-primary')%>
-					<%= link_to("Edit",{:action => 'edit', :id => @user.id}, :class => 'btn btn-primary')%>
+					<%= link_to "Edit", edit_users_admin_path, class: 'btn btn-primary'%>
 				</div>
 			</div>
 		</div>      
