@@ -1,0 +1,152 @@
+<%= form_for @gadget, url: @url, method: @method, class: 'form-horizontal'  do |f| %>
+	<div class="container">
+		<div class="col-lg-10">
+			<div class="row">
+				<div class="form-group">  		
+					<div class="col-md-9">
+						<%= f.text_field :title, required: true, class: 'form-control input-md', placeholder: 'Enter title here' %>
+					</div>
+					<div class="col-md-3"> 
+						<%= link_to "Back", gadgets_path, class: 'btn btn-primary' %>
+						<%= f.submit "Save", class: 'btn btn-primary' %>
+					</div>
+				</div>
+			</div>
+      <hr/>
+  		<!-- col-lg-9 close  -->
+			<div class="col-lg-8">
+				<div class="row">
+					<div class="form-group">
+			  		<label class="col-md-4 control-label">Name of the method/gadget</label>  
+						<div class="col-md-7">
+							<%= f.text_field :method_or_gadget, required: true, class: 'form-control input-md' %>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+				  	<label class="col-md-4 control-label">What is it for?</label>  
+						<div class="col-md-7">
+							<%= f.text_field :useful_for, class: 'form-control input-md' %>
+						</div>
+					</div>
+				</div>
+				<br>
+				<!-- insert code for analysis_group here -->
+				<!-- insert code for specific_parameters here -->
+				<!-- insert code for type_of_method here -->
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="">Short description of gadget</label>
+						<div class="col-md-7"> 
+							<%= f.text_area :gadget_description, class: 'form-control', rows: 4 %>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="buttondropdown">Cost</label>
+						<div class="col-md-5">
+				  		<%= f.text_field :cost, class: 'form-control' %>
+				  	</div>
+				  	<!-- insert code for currency here -->
+					</div>
+		  	</div>
+		  	<br>
+		  	<!-- insert code for tool_to_user here -->
+				<!-- insert code for gadget_website here -->
+				<!-- insert code foe brochure here -->
+				<hr/>
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label">Company name</label>  
+						<div class="col-md-7">
+							<%= f.text_field :company_name, class: 'form-control input-md' %>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+			  		<label class="col-md-4 control-label">Company description</label>  
+						<div class="col-md-7">
+							<%= f.text_area :company_description, class: 'form-control input-md', rows:4 %>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">			
+					<div class="form-group">
+			 	 		<label class="col-md-4 control-label">Company website</label>  
+						<div class="col-md-7">
+							<%= f.text_field :company_website, class: 'form-control input-md' %>
+						</div>
+					</div>
+				</div>
+				<br>
+				<!-- insert code for advisaryinstitutes here -->
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label">Technology used</label>  
+						<div class="col-md-7">
+							<%= f.text_field :technology_used, class: 'form-control input-md' %>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+			  		<label class="col-md-4 control-label">Scientific description of</label>  
+						<div class="col-md-7">
+							<%= f.text_area :scientific_description, class: 'form-control input-md', rows: 4 %>
+						</div>
+					</div>
+				</div>
+				<br>
+				<!-- insert code for scientific_papers here -->
+				<!-- insert code for usefullnessforfield_nrc here -->
+				<!-- insert code for Qualifyareasofinterest here -->
+				<!-- insert code for Field2usefullforwhich here -->
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label">Explanation by evaluator(NRC)</label>
+						<div class="col-md-7"> 
+							<%= f.text_area :field_2_explanation, class: 'form-control input-md', rows: 4 %>
+						</div>
+					</div>
+				</div>
+				<br>
+				<hr/>
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label">Name of evaluator(NRC)</label>  
+						<div class="col-md-7">
+							<%= f.text_field :name, class: 'form-control input-md',
+									 id: 'fieldwidth' %>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label">Comments/suggestion of evaluator</label>  
+						<div class="col-md-7">
+							<%= f.text_area :comment, class: 'form-control input-md', rows: 4, id: 'fieldwidth' %>
+						</div>
+					</div>	
+				</div>
+				<div class="text-center"> 
+					<%= link_to "Back", gadgets_path, class: 'btn btn-primary' %>
+					<%= f.submit "Save", class: 'btn btn-primary' %>
+				</div>
+			</div>
+	  </div> 
+  </div>
+	
+	<!-- insert code for avatars here -->
+	<!-- insert code for video location here -->
+<% end %>
+
+

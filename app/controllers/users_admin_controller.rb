@@ -14,8 +14,6 @@ class UsersAdminController < ApplicationController
       flash[:notice] =  'User successfully created.' 
       redirect_to users_admin_index_path
     else
-        #puts "error messages"
-        #puts @user.errors
         flash[:error] =  'Problem creating user.' 
         render 'new'
     end

@@ -1,2 +1,220 @@
-<h1>Gadgets#show</h1>
-<p>Find me in app/views/gadgets/show.html.erb</p>
+<div class="row">
+  <div class="col-md-8">
+    <p>
+      <div>
+        <% if flash[:notice]  %>
+          <div class="alert alert-dismissable alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong><%= flash[:notice] %></strong> 
+          </div>
+        <% end %> <!-- flash end -->
+        
+        <div class="row">
+          <div class="form-group">
+            <div class="col-md-5">
+              <%= @gadget.title %>
+            </div>
+            <div class="col-md-7">
+              <%= link_to 'Back',  gadgets_path, class: 'btn btn-primary' %> 
+              <%= link_to "Edit", edit_gadget_path(@gadget.id), class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div> <!-- row end -->
+        <hr/>
+        <div class="row">
+          <div class="col-md-8">
+            <dl>
+              <% if !@gadget.method_or_gadget.blank?%>
+              <dt>Name of the method/gadget</dt>
+              <dd><%= @gadget.method_or_gadget%></dd>
+              <% end %>
+            </dl>
+            <dl>
+            <% if !@gadget.useful_for.blank?%>
+              <dt>What is it for?</dt>
+              <dd> <%= @gadget.useful_for %></dd>
+              <% end %>
+            </dl>
+            <!-- code for analysis_group here -->
+            <!-- code for specific_parameters here -->
+            <!-- code for type_of_methods here -->
+            <dl>
+              <% if !@gadget.gadget_description.blank?%>
+              <dt>Gadget description</dt>
+              <dd> <%= @gadget.gadget_description %></dd>
+              <% end %>
+            </dl>
+            <dl>
+              <% if !@gadget.cost.nil?%>
+              <dt>Cost</dt>
+              <dd> <%= @gadget.cost %><!-- code for currency here --></dd>
+              <% end %>
+            </dl>
+            <!-- code for tool_to_user here -->
+            <!-- code for gadget_website here -->
+            <!-- code for brochure here -->
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <!-- code for avatar here -->
+            </div>
+            <div class="row">
+              <!-- code for video location here -->
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <dl>
+          <% if !@gadget.company_name.blank?%>
+          <dt>Company name</dt>
+          <dd> <%= @gadget.company_name %></dd>
+          <% end %>
+        </dl>
+        <dl>
+        <%if !@gadget.company_description.blank? %> 
+          <dt>Company description</dt>
+          <dd> <%= @gadget.company_description  %></dd>
+        <% end %>
+        </dl>
+        <dl>
+        <%if !@gadget.company_website.blank? %> 
+          <dt>Company website</dt>
+          <dd> <%= @gadget.company_website %></dd>
+          <% end %>
+        </dl>
+        <!-- code for advisaryinstitutes here -->
+        <hr/>
+        <dl>
+          <%if !@gadget.technology_used.blank? %>
+            <dt>Technology used</dt>
+            <dd>  <%= @gadget.technology_used %></dd>
+          <% end %>
+        </dl>
+        <dl>
+          <%if !@gadget.scientific_description.blank? %>
+            <dt>Technology description</dt>
+            <dd>  <%= @gadget.scientific_description %></dd>
+          <% end %>
+        </dl>
+        <dl>
+          <!-- code for scientifiv_papers here -->
+        </dl>
+        <hr/>
+        
+        <!-- <dl>
+          <dt> Preliminary evaluation by vivsan</dt>
+          <dd> 
+            <%# if @gadget.evaluation_by_vivsan %> 
+              No
+              <%# else %>
+              Yes
+            <%# end %>
+          </dd>
+        </dl> -->
+        <!-- <dl>
+            <%#if !@gadget.qualifyareasofinterests.empty? %>
+              <dt>QuaLiFY area of interest</dt>
+              <%# @gadget.qualifyareasofinterests.each do |group| %>
+              <dd> <%#= group.name %></dd>
+              <%# end %>
+          <%# end %>
+        <hr/>
+        
+        <dl>
+
+          <dt>Evaluated by NRC </dt>
+          <dd><%#if  @gadget.evaluation_by_nrc %>
+              Yes
+              <%# else %>
+              No
+              <%# end %>
+          </dd>
+
+        </dl>
+        <dl>
+
+          <dt>Usefulness for which field lab? </dt>
+          <dd>
+          <%# if !@gadget.field2usefullforwhich.nil? %>
+          <%#= @gadget.field2usefullforwhich.name %>
+          <%# else %>
+            <%= %>
+            <%# end %>
+           </dd>
+        
+        </dl>-->
+        
+        <dl>
+          <% if !@gadget.name.blank? %>
+            <dt>Name </dt>
+            <dd> <%= @gadget.name %></dd>
+          <% end %>
+        </dl>
+        <dl>
+          <% if !@gadget.comment.blank? %>
+            <dt>Comment/evolution/suggestion</dt>
+            <dd> <%= @gadget.comment %></dd>
+          <% end %>
+        </dl>
+      </div><!-- close to well   -->
+    </p>
+  <!-- </div>
+  <p>
+    <div class="col-md-4"> 
+      <div class="well">
+       <div id="ratings">
+              <b> Average rating: </b> <%#= ratings_for @gadget, :static %>
+              <b>Your rating:</b> <%#= ratings_for @gadget, :show_user_rating => true %> 
+            </div>
+        </div>
+        <div class="well">
+        <h3 class="text-center"> Comments</h3>
+          <%#= form_for @comment, url: {controller: 'comments', action: 'create', qi_id: @gadget.id }, class: 'form-control', method: :post, remote: true do |f| %>
+            <p>
+              <%#= f.text_area :body, class: 'form-control input-sm', placeholder: 'Enter your comment', required: true, :rows => 3, id: 'text_area' %>
+              <%#= f.hidden_field :user_id, value: current_user.id %>
+            </p>
+            <p>
+              <%#=f.submit "Post", class: 'btn btn-primary btn-sm pull-right' %>
+            </p>
+            <br><br>
+            <%# end %>
+            <p>
+           
+
+              <%# @obj = @gadget %>
+              <div id="comments"><%#= render '/comments/comments' %></div>
+            </p>
+      </div>
+    </div>
+  </p>
+</div> -->
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Mail Gadget Inventory</h4>
+      </div>
+      <div class="modal-body">
+        <%#= form_for @gadget, url: {controller: 'qualityinventory', action: 'sendmail', id: @gadget.id}, method: :post, :html => {class:'form-horizontal' }  do |f| %>
+
+        <%#= f.email_field :email, required: true, class: 'form-control', placeholder: 'Enter email address'  %>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%#= f.submit "Send mail", class: 'btn btn-primary' %>
+        </div>
+        <%# end %>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="width: 117%">
+     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+       <%#= image_tag(@gadget.avatar.url, size: "700x700") %>
+    </div>
+  </div>
+</div> -->

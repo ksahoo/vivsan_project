@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140506072145) do
+ActiveRecord::Schema.define(version: 20140508063838) do
+
+  create_table "gadgets", force: true do |t|
+    t.string   "title"
+    t.string   "method_or_gadget"
+    t.string   "useful_for"
+    t.string   "analysis_group"
+    t.text     "gadget_description"
+    t.decimal  "cost",                     precision: 10, scale: 0
+    t.string   "company_name"
+    t.text     "company_description"
+    t.string   "company_website"
+    t.string   "technology_used"
+    t.text     "scientific_description"
+    t.text     "field_1_explanation"
+    t.string   "field_2_useful_for_which"
+    t.text     "field_2_explanation"
+    t.string   "name"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "role"

@@ -1,2 +1,43 @@
-<h1>Gadgets#index</h1>
-<p>Find me in app/views/gadgets/index.html.erb</p>
+<div class="row">
+  <div class="col-md-10" id="padding">
+    <div class="col-md-10">
+      <p class="lead"> Gadget inventory</p> 
+      <div class="row">
+        </br>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <%= link_to 'ADD GADGET', new_gadget_path, class: 'btn btn-primary' %>
+    </div>
+    <% if !@gadgets.empty? %>
+      <table class="table table-striped table-hover">
+          <tr>
+            <th>Title</th>
+            <th>Name of the Tool</th>
+            <th>Company name</th>
+            <th colspan="3" class="text-center"></th>
+          </tr>
+        <% @gadgets.each do |gadget| %>
+          <tr>
+            <td><%= gadget.title %></td>
+            <td><%= gadget.method_or_gadget %></td>
+            <td>
+              <%= gadget.company_name%>
+            </td>
+            <td><%= link_to 'Show', gadget_path(gadget.id) %></td>
+            <td><%= link_to 'Edit', edit_gadget_path(gadget.id) %></td>
+            <td><%= link_to 'Delete',gadget_path(gadget.id), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <div class="col-md-10">
+        <p class="text-center"> There are no matched records.</p>
+      </div>
+    <% end %>
+    
+    <!-- <div  class='col-lg-offset-3'>
+    
+    </div> -->
+  </div>
+</div>

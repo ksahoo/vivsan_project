@@ -1,2 +1,10 @@
-<h1>Gadgets#new</h1>
-<p>Find me in app/views/gadgets/new.html.erb</p>
+
+<div class="container">
+	<div class="row"> 
+  	<div class="col-lg-10 ">	      	
+      <% @url = {controller: 'gadgets', action: 'create'}%>
+      <% @method = 'post'%>
+    	<%= render 'form'%>
+  	</div>
+	</div>   
+</div>   
