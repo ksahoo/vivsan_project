@@ -8,6 +8,7 @@ class RolesController < ApplicationController
 
   def create
   	@role = Role.new(role: params[:role][:role])
+    
   	if @role.save
   		redirect_to roles_path
     else
@@ -20,8 +21,10 @@ class RolesController < ApplicationController
   def destroy
   	@role = Role.find(params[:id])
     if @role.destroy
-      redirect_to(:action => 'index')
+      flash[:notice] = "Role successfully deleted."
+      redirect_to roles_path
     else
+      flash[:error] = "Problem occured while deleting the role"
       render 'index'
     end
   end
@@ -39,9 +42,12 @@ class RolesController < ApplicationController
   	@role = Role.find(params[:id])
     @role.role= params[:role][:role]
 
-    if @role.save  
+    if @role.save 
+      flash[:notice] = "Role successfully updated."
+    else
+      flash[:error] = "Problem in updating the role."
+    end
       @roles = Role.all
       render 'index'
-    end
   end
 end

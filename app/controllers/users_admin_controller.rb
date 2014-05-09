@@ -39,36 +39,29 @@ class UsersAdminController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    puts ("ID:")
-    puts (@user.id)
     @user.firstname = params[:user][:firstname]
     @user.lastname= params[:user][:lastname]
     @user.email= params[:user][:email]
     @user.institution= params[:user][:institution]
     @user.role= params[:user][:role]
 
-    # if @user.update_attributes(params.require(:user).permit(:firstname, :lastname, :email, :institution, :role))
     if @user.save  
-      puts "entered in to if of update"
       @users = User.all
+      flash[:notice] =  'User successfully updated.'
       redirect_to users_admin_index_path
     else
+      flash[:notice] =  'Problem updating user.'
       render 'edit'
-    # else
-    #   render 'update'
     end
-    # @user = User.find(params[:id])
-    # if @user.update_attributes(params.require(:user).permit(:firstname, :lastname, :email, :institution, :role))
-    #   @users = UserData.all
-    #   render ('index')
-    # end
   end
 
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
+      flash[:notice] =  'User successfully deleted.'
       redirect_to(:action => 'index')
     else
+      flash[:notice] =  'Problem deleting user.'
       render 'index'
     end
   end

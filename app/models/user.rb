@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	attr_accessible :firstname, :lastname, :email, :institution, :password, :role
 	EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\z/i
 	validates_presence_of :firstname
 	# validates_length_of :firstname, :within => 4..15

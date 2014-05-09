@@ -2,13 +2,6 @@
   <div class="col-md-8">
     <p>
       <div>
-        <% if flash[:notice]  %>
-          <div class="alert alert-dismissable alert-success">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong><%= flash[:notice] %></strong> 
-          </div>
-        <% end %> <!-- flash end -->
-        
         <div class="row">
           <div class="form-group">
             <div class="col-md-5">
@@ -35,7 +28,14 @@
               <dd> <%= @gadget.useful_for %></dd>
               <% end %>
             </dl>
-            <!-- code for analysis_group here -->
+            <dl>
+              <% if !@gadget.analysis_groups.empty?%>
+              <dt>Analysis group(s)</dt>
+              <% @gadget.analysis_groups.each do |group| %>
+              <dd> <%= group.name %></dd>
+              <% end %>
+              <% end %>
+            </dl>
             <!-- code for specific_parameters here -->
             <!-- code for type_of_methods here -->
             <dl>

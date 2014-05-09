@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row"> 
   	<div class="col-lg-10 col-md-10">	      	
-    	<% @url = roles_path%>
+    	<% @url = {controller: 'roles', action: 'create'}%>
     	<% @method = 'post'%>
     	<%= render 'form'%>
   	</div>

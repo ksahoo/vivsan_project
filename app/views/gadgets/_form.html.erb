@@ -33,7 +33,29 @@
 					</div>
 				</div>
 				<br>
-				<!-- insert code for analysis_group here -->
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label">Analysis group(s)</label>
+						<div class="col-md-7" style="padding-top:13px">
+						
+	  					<% AnalysisGroup.all.each do |a_value| %> 
+						  	<% if @gadget.new_record? %>
+							  	<%= f.check_box(:analysis_group, { :multiple => true }, a_value.id, nil) %>
+									<%=  a_value.name %>  		
+								<% else %>
+									<% if @gadget.analysis_groups.pluck(:id).include?(a_value.id) 	%>
+										<%= f.check_box(:analysis_group, { :multiple => true, checked:  true}, a_value.id, nil) %>
+										<%=  a_value.name %>  
+									<% else %>
+										<%= f.check_box(:analysis_group, { :multiple => true }, a_value.id, nil) %>
+										<%=  a_value.name %>  
+									<% end %>	
+								<% end %>
+  						<% end %>
+						</div>
+					</div>
+				</div>
+				<br>
 				<!-- insert code for specific_parameters here -->
 				<!-- insert code for type_of_method here -->
 				<div class="row">
