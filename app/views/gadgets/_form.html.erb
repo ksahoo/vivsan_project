@@ -57,7 +57,28 @@
 				</div>
 				<br>
 				<!-- insert code for specific_parameters here -->
-				<!-- insert code for type_of_method here -->
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label">Type of method/gadget</label>
+						<div class="col-md-7" style="padding-top:13px">
+							<% TypeOfMethod.all.each do |a_value| %> 
+						  	<% if @gadget.new_record? %>
+							  	<%= f.check_box(:type_of_method, { :multiple => true }, a_value.id, nil) %>
+									<%=  a_value.name %>  
+								<% else %>
+									<% if @gadget.type_of_methods.pluck(:id).include?(a_value.id) 	%>
+										<%= f.check_box(:type_of_method, { :multiple => true, checked:  true}, a_value.id, nil) %>
+										<%=  a_value.name %>  
+									<% else %>
+										<%= f.check_box(:type_of_method, { :multiple => true }, a_value.id, nil) %>
+										<%=  a_value.name %>  
+									<% end %>	
+								<% end %>
+							<% end %>
+	  				</div>
+					</div>
+				</div>
+				<br>
 				<div class="row">
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="">Short description of gadget</label>
@@ -73,7 +94,9 @@
 						<div class="col-md-5">
 				  		<%= f.text_field :cost, class: 'form-control' %>
 				  	</div>
-				  	<!-- insert code for currency here -->
+				  	<div class="col-md-3">
+				    	<%= f.select :currency_id, Currency.all.collect {|p| [ p.name, p.id] },{:default => 'Guest'}, {:class => 'form-control', id: 'currency_select'} %>
+				  	</div>
 					</div>
 		  	</div>
 		  	<br>

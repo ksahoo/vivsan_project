@@ -12,6 +12,9 @@ class GadgetsController < ApplicationController
     analysis_array = params[:gadget][:analysis_group]
     params[:gadget].delete('analysis_group')
 
+    type_of_method_array = params[:gadget][:type_of_method]
+    params[:gadget].delete('type_of_method')
+
     @gadget = Gadget.new(title: params[:gadget][:title],
       method_or_gadget: params[:gadget][:method_or_gadget], 
       useful_for: params[:gadget][:useful_for], 
@@ -26,7 +29,9 @@ class GadgetsController < ApplicationController
       field_1_explanation: params[:gadget][:field_1_explanation], 
       field_2_useful_for_which: params[:gadget][:field_2_useful_for_which], 
       field_2_explanation: params[:gadget][:field_2_explanation], 
-      name: params[:gadget][:name], comment: params[:gadget][:comment])
+      name: params[:gadget][:name], 
+      comment: params[:gadget][:comment],
+      currency_id: params[:gadget][:currency_id])
       
       
     if @gadget.save
@@ -35,6 +40,13 @@ class GadgetsController < ApplicationController
           @gadget.analysis_groups <<  AnalysisGroup.find(group.to_i)
         end
       end
+
+      if !type_of_method_array.nil?   
+        type_of_method_array.each do |group| 
+          @gadget.type_of_methods <<  TypeOfMethod.find(group.to_i)
+        end
+      end
+
       flash[:notice] =  'Gadget successfully created.' 
       redirect_to gadgets_path
     else
@@ -58,15 +70,31 @@ class GadgetsController < ApplicationController
 
   def update
     @gadget = Gadget.find(params[:id])
+
     analysis_array = params[:gadget][:analysis_group]
     params[:gadget].delete('analysis_group')
+
+    type_of_method_array = params[:gadget][:type_of_method]
+    params[:gadget].delete('type_of_method')
+
     if @gadget.update_attributes(params.require(:gadget).permit(
       :title, :method_or_gadget, :useful_for, :gadget_description, 
-      :cost, :company_name, :company_description, :company_website))
+      :cost, :company_name, :company_description, :company_website, 
+      :currency_id))
 
-      if !analysis_array.nil?   
+      if !analysis_array.nil?
+        @gadget.analysis_groups.delete_all
+      
         analysis_array.each do |group| 
           @gadget.analysis_groups <<  AnalysisGroup.find(group.to_i)
+        end
+      end
+
+      if !type_of_method_array.nil?
+        @gadget.type_of_methods.delete_all
+      
+        type_of_method_array.each do |group| 
+          @gadget.type_of_methods <<  TypeOfMethod.find(group.to_i)
         end
       end      
       flash[:notice] = 'Gadget successfully updated'

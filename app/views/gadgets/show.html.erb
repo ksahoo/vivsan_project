@@ -37,7 +37,14 @@
               <% end %>
             </dl>
             <!-- code for specific_parameters here -->
-            <!-- code for type_of_methods here -->
+            <dl>
+              <% if !@gadget.type_of_methods.empty?%>
+              <dt>Type of method/gadget</dt>
+              <% @gadget.type_of_methods.each do |group| %>
+              <dd> <%= group.name %></dd>
+              <% end %>
+              <% end %>
+            </dl>
             <dl>
               <% if !@gadget.gadget_description.blank?%>
               <dt>Gadget description</dt>
@@ -47,7 +54,7 @@
             <dl>
               <% if !@gadget.cost.nil?%>
               <dt>Cost</dt>
-              <dd> <%= @gadget.cost %><!-- code for currency here --></dd>
+              <dd> <%= @gadget.cost %>&nbsp<%= @gadget.currency.name if !@gadget.currency.nil? %></dd>
               <% end %>
             </dl>
             <!-- code for tool_to_user here -->
