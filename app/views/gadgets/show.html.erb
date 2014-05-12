@@ -12,7 +12,7 @@
               <%= link_to "Edit", edit_gadget_path(@gadget.id), class: 'btn btn-primary' %>
             </div>
           </div>
-        </div> <!-- row end -->
+        </div>
         <hr/>
         <div class="row">
           <div class="col-md-8">
@@ -30,13 +30,22 @@
             </dl>
             <dl>
               <% if !@gadget.analysis_groups.empty?%>
-              <dt>Analysis group(s)</dt>
-              <% @gadget.analysis_groups.each do |group| %>
-              <dd> <%= group.name %></dd>
-              <% end %>
+                <dt>Analysis group(s)</dt>
+                <% @gadget.analysis_groups.each do |group| %>
+                  <dd> <%= group.name %></dd>
+                <% end %>
               <% end %>
             </dl>
-            <!-- code for specific_parameters here -->
+            <!-- <dl>
+              <%# if !@gadget.specific_parameters.empty?%>
+                <dt>Specific Parameters</dt>
+                <dd> 
+                  <%# @gadget.specific_parameters.each do |i| %>
+                    <%#= i.name%><br>
+                  <%# end %>
+                </dd>
+              <%# end %>
+            </dl> -->
             <dl>
               <% if !@gadget.type_of_methods.empty?%>
               <dt>Type of method/gadget</dt>
@@ -57,9 +66,32 @@
               <dd> <%= @gadget.cost %>&nbsp<%= @gadget.currency.name if !@gadget.currency.nil? %></dd>
               <% end %>
             </dl>
-            <!-- code for tool_to_user here -->
-            <!-- code for gadget_website here -->
-            <!-- code for brochure here -->
+            <dl>
+            <% if !@gadget.tool_to_users.nil?%>
+              <dt>Is the tool avaliable to users?</dt>
+                <dd> 
+                  <% if @gadget.tool_to_users == "Yes" %> 
+                    Yes
+                    <% else %>
+                    <% if @gadget.tool_to_users == "No" %>
+                      No
+                    <% end %>
+                  <% end %>
+                </dd>
+            <% end %>
+            </dl>
+            <dl>
+              <% if !@gadget.gadget_website.blank?%>
+              <dt>Gadget website</dt>
+              <dd> <%= @gadget.gadget_website %></dd>
+              <% end %>
+            </dl>
+            <dl>
+              <% if !@gadget.brochure.blank?%>
+              <dt>Brochure</dt>
+              <dd> <%= @gadget.brochure %></dd>
+              <% end %>
+            </dl>
           </div>
           <div class="col-md-4">
             <div class="row">
@@ -107,49 +139,52 @@
           <!-- code for scientifiv_papers here -->
         </dl>
         <hr/>
-        
-        <!-- <dl>
+        <dl>
+            <%if !@gadget.qualify_areas_of_interests.empty? %>
+              <dt>Qualify area of interest</dt>
+              <% @gadget.qualify_areas_of_interests.each do |group| %>
+              <dd> <%= group.name %></dd>
+              <% end %>
+          <% end %>
+        <hr/>
+        <dl>
           <dt> Preliminary evaluation by vivsan</dt>
           <dd> 
-            <%# if @gadget.evaluation_by_vivsan %> 
+            <% if @gadget.evaluation_by_vivsan %> 
               No
-              <%# else %>
+            <% else %>
               Yes
-            <%# end %>
+            <% end %>
           </dd>
-        </dl> -->
-        <!-- <dl>
-            <%#if !@gadget.qualifyareasofinterests.empty? %>
-              <dt>QuaLiFY area of interest</dt>
-              <%# @gadget.qualifyareasofinterests.each do |group| %>
-              <dd> <%#= group.name %></dd>
-              <%# end %>
-          <%# end %>
-        <hr/>
+        </dl>
         
         <dl>
-
           <dt>Evaluated by NRC </dt>
-          <dd><%#if  @gadget.evaluation_by_nrc %>
+          <dd><%if  @gadget.evaluation_by_nrc %>
               Yes
-              <%# else %>
+              <% else %>
               No
-              <%# end %>
+              <% end %>
           </dd>
-
         </dl>
         <dl>
-
+          <dt>Useful for field-NRC </dt>
+          <dd>
+            <% if !@gadget.usefulness_for_field_nrc.nil? %>
+              <%= @gadget.usefulness_for_field_nrc %>
+            <% end %>
+          </dd>
+        </dl>
+        <dl>
           <dt>Usefulness for which field lab? </dt>
           <dd>
-          <%# if !@gadget.field2usefullforwhich.nil? %>
-          <%#= @gadget.field2usefullforwhich.name %>
-          <%# else %>
-            <%= %>
-            <%# end %>
-           </dd>
-        
-        </dl>-->
+            <% if !@gadget.field2_useful_for_which.nil? %>
+              <%= @gadget.field2_useful_for_which.name %>
+            <% else %>
+              <%= %>
+            <% end %>
+           </dd>        
+        </dl>
         
         <dl>
           <% if !@gadget.name.blank? %>

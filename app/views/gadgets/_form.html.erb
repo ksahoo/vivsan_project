@@ -1,4 +1,4 @@
-<%= form_for @gadget, url: @url, method: @method, class: 'form-horizontal'  do |f| %>
+<%= nested_form_for @gadget, url: @url, method: @method, class: 'form-horizontal'  do |f| %>
 	<div class="container">
 		<div class="col-lg-10">
 			<div class="row">
@@ -56,7 +56,27 @@
 					</div>
 				</div>
 				<br>
-				<!-- insert code for specific_parameters here -->
+				<div class="row">
+					<div class="form-group">
+				  	<label class="col-md-4 control-label">Specific parameters</label> 
+						<div class="col-md-8">
+							<%= f.fields_for :specific_parameters do |ai_form| %>
+								<p>
+  								<div class="row">
+  									<div class="col-lg-9">
+											<%= ai_form.text_field :name, class: 'form-control input-md' %>
+		  							</div>
+										<%= ai_form.link_to_remove raw("<span class=\"glyphicon glyphicon-minus\" id=\"button\">"), class: 'btn btn-default' %>
+	  							</div>
+	  						</p>
+							<% end %>
+							<p>
+								<%= f.link_to_add raw("<span class=\"glyphicon glyphicon-plus\" id=\"button\">"), :specific_parameters, class: 'btn btn-default' %>
+							</p>
+						</div> 
+					</div>
+				</div>
+				<br>
 				<div class="row">
 					<div class="form-group">
 						<label class="col-md-4 control-label">Type of method/gadget</label>
@@ -100,9 +120,40 @@
 					</div>
 		  	</div>
 		  	<br>
-		  	<!-- insert code for tool_to_user here -->
-				<!-- insert code for gadget_website here -->
-				<!-- insert code foe brochure here -->
+		  	<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="radios">Is the tool available to users?</label>
+						<div class="col-md-8"> 
+  						<label class="radio-inline" for="radios-0">
+    						<%= f.radio_button :tool_to_users, "Yes" %>
+  						Yes
+					    </label> 
+					    <label class="radio-inline" for="radios-1">
+					      <%= f.radio_button :tool_to_users, "No" %>
+					      No
+					    </label> 
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="">Gadget website</label>
+						<div class="col-md-7"> 
+							<%= f.text_field :gadget_website, class: 'form-control'%>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="">Brochure</label>
+						<div class="col-md-7"> 
+							<%= f.text_field :brochure, class: 'form-control'%>
+						</div>
+					</div>
+				</div>
+				<br>
 				<hr/>
 				<div class="row">
 					<div class="form-group">
@@ -151,9 +202,65 @@
 				</div>
 				<br>
 				<!-- insert code for scientific_papers here -->
-				<!-- insert code for usefullnessforfield_nrc here -->
-				<!-- insert code for Qualifyareasofinterest here -->
-				<!-- insert code for Field2usefullforwhich here -->
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="radios">Usefulness for field</label>
+						<div class="col-md-8"> 
+  						<label class="radio-inline" for="radios-0">
+    						<%= f.radio_button :usefulness_for_field_nrc, "Yes" %>
+  						Yes
+					    </label> 
+					    <label class="radio-inline" for="radios-1">
+					      <%= f.radio_button :usefulness_for_field_nrc, "No" %>
+					      No
+					    </label> 
+					    <label class="radio-inline" for="radios-2">
+					     <%= f.radio_button :usefulness_for_field_nrc, "Maybe" %>
+					      May be
+					    </label>
+					    <label class="radio-inline">
+  							 <%= f.check_box :evaluation_by_nrc, {checked: false} %> 
+  						 			Evaluated by NRC
+							</label>
+							<label class="radio-inline">
+  							 <%= f.check_box :evaluation_by_vivsan, {checked: false} %> 
+  						 			Evaluated by vivsan
+							</label>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+						<label class="col-md-4 control-label">Qualify areas of interest</label>
+						<div class="col-md-7" style="padding-top:13px">
+							<% QualifyAreasOfInterest.all.each do |a_value| %> 
+								<% if @gadget.new_record? %>
+								  <%= f.check_box(:qualify_areas_of_interests, { :multiple => true }, a_value.id, nil) %>
+									<%=  a_value.name %>  
+								<% else %>
+									<% if @gadget.qualify_areas_of_interests.pluck(:id).include?(a_value.id) 	%>
+										<%= f.check_box(:qualify_areas_of_interests, { :multiple => true, checked:  true}, a_value.id, nil) %>
+										<%=  a_value.name %>  
+									<% else %>
+										<%= f.check_box(:qualify_areas_of_interests, { :multiple => true }, a_value.id, nil) %>
+										<%=  a_value.name %>  
+									<% end %>	
+								<% end %>
+							<% end %>
+  					</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="form-group">
+					  <label class="col-md-4 control-label">Useful for which field lab? </label>  
+						<div class="col-md-7">
+							<%= f.select :field2_useful_for_which_id, Field2UsefulForWhich.all.collect {|p| [ p.name, p.id] },{:default => ''}, {:class => 'form-control', id: ''} %>
+						</div>
+					</div>
+				</div>
+				<br>
 				<div class="row">
 					<div class="form-group">
 						<label class="col-md-4 control-label">Explanation by evaluator(NRC)</label>

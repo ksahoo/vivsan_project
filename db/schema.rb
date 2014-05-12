@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140510065630) do
+ActiveRecord::Schema.define(version: 20140512104340) do
 
   create_table "analysis_groups", force: true do |t|
     t.string   "name"
@@ -30,26 +30,44 @@ ActiveRecord::Schema.define(version: 20140510065630) do
     t.datetime "updated_at"
   end
 
+  create_table "field2_useful_for_whiches", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "gadgets", force: true do |t|
     t.string   "title"
     t.string   "method_or_gadget"
     t.string   "useful_for"
     t.string   "analysis_group"
     t.text     "gadget_description"
-    t.decimal  "cost",                     precision: 10, scale: 0
+    t.decimal  "cost",                        precision: 10, scale: 0
     t.string   "company_name"
     t.text     "company_description"
     t.string   "company_website"
     t.string   "technology_used"
     t.text     "scientific_description"
     t.text     "field_1_explanation"
-    t.string   "field_2_useful_for_which"
     t.text     "field_2_explanation"
     t.string   "name"
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "currency_id"
+    t.string   "tool_to_users"
+    t.string   "gadget_website"
+    t.string   "brochure"
+    t.string   "field2_useful_for_which_id"
+    t.string   "usefulness_for_field_nrc"
+    t.string   "usefulness_for_field_vivsan"
+    t.boolean  "evaluation_by_vivsan",                                 default: false
+    t.boolean  "evaluation_by_nrc",                                    default: false
+  end
+
+  create_table "gadgets_qualify_areas_of_interests", id: false, force: true do |t|
+    t.integer "gadget_id"
+    t.integer "qualify_areas_of_interest_id"
   end
 
   create_table "gadgets_type_of_methods", id: false, force: true do |t|
@@ -57,11 +75,26 @@ ActiveRecord::Schema.define(version: 20140510065630) do
     t.integer "gadget_id"
   end
 
+  create_table "qualify_areas_of_interests", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", force: true do |t|
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "specific_parameters", force: true do |t|
+    t.string   "name"
+    t.integer  "gadget_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "specific_parameters", ["gadget_id"], name: "index_specific_parameters_on_gadget_id", using: :btree
 
   create_table "type_of_methods", force: true do |t|
     t.string   "name"

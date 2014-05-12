@@ -25,3 +25,13 @@ AnalysisGroup.create(name: 'Others') if AnalysisGroup.where(name: 'Others').firs
 TypeOfMethod.create(name: 'Non-invasive') if TypeOfMethod.where(name: 'Non-invasive').first.nil?
 TypeOfMethod.create(name: 'Minimally-invasive') if TypeOfMethod.where(name: 'Minimally-invasive').first.nil?
 TypeOfMethod.create(name: 'Invasive') if TypeOfMethod.where(name: 'Invasive').first.nil?
+
+QualifyAreasOfInterest.create(name: 'Dietary assessment') if QualifyAreasOfInterest.where(name: 'Dietary assessment').first.nil?
+QualifyAreasOfInterest.create(name: 'health status') if QualifyAreasOfInterest.where(name: 'health status').first.nil?
+QualifyAreasOfInterest.create(name: 'Physical activity') if QualifyAreasOfInterest.where(name: 'Physical activity').first.nil?
+QualifyAreasOfInterest.create(name: 'Fitness performance & genotype') if QualifyAreasOfInterest.where(name: 'Fitness performance & genotype').first.nil?
+
+Field2UsefulForWhich.create(name: 'NONE') if Field2UsefulForWhich.where(name: 'NONE').first.nil?
+Field2UsefulForWhich.create(name: 'Obese children') if Field2UsefulForWhich.where(name: 'Obese children').first.nil?
+Field2UsefulForWhich.create(name: 'Children w. eating disorders') if Field2UsefulForWhich.where(name: 'Children w. eating disorders').first.nil?
+Field2UsefulForWhich.create(name: 'Diabetic adults') if Field2UsefulForWhich.where(name: 'Diabetic adults').first.nil?
